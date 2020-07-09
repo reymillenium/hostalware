@@ -1,0 +1,198 @@
+object DataModuleAlertasDelSistema: TDataModuleAlertasDelSistema
+  OldCreateOrder = False
+  Left = 347
+  Top = 58
+  Height = 600
+  Width = 677
+  object spSelecHabitacionesVacias: TADOStoredProc
+    Connection = DataModuleConexionGeneral.ADOConnectionGeneral
+    ProcedureName = 'SelecAlertaDeHabitacionesVacias;1'
+    Parameters = <
+      item
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        Direction = pdReturnValue
+        Precision = 10
+        Value = Null
+      end>
+    Left = 64
+    Top = 72
+  end
+  object dsSelecHabitacionesVacias: TDataSource
+    DataSet = spSelecHabitacionesVacias
+    Left = 216
+    Top = 88
+  end
+  object spEliminarTodasLasAlertasDelSistema: TADOStoredProc
+    Connection = DataModuleConexionGeneral.ADOConnectionGeneral
+    ProcedureName = 'EliminarTodasLasAlertasDelSistema;1'
+    Parameters = <
+      item
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        Direction = pdReturnValue
+        Precision = 10
+        Value = Null
+      end>
+    Left = 552
+    Top = 16
+  end
+  object spInsertarAlertaDelSistema: TADOStoredProc
+    Connection = DataModuleConexionGeneral.ADOConnectionGeneral
+    ProcedureName = 'InsertarAlertaDelSistema;1'
+    Parameters = <
+      item
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        Direction = pdReturnValue
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@vMotivoDeAlerta'
+        Attributes = [paNullable]
+        DataType = ftString
+        Size = 2147483647
+        Value = Null
+      end
+      item
+        Name = '@vDescripcionDeAlerta'
+        Attributes = [paNullable]
+        DataType = ftString
+        Size = 2147483647
+        Value = Null
+      end>
+    Left = 552
+    Top = 72
+  end
+  object spSelecTodasLasAlertasDelSistema: TADOStoredProc
+    Connection = DataModuleConexionGeneral.ADOConnectionGeneral
+    ProcedureName = 'SelecTodasLasAlertasDelSistema;1'
+    Parameters = <
+      item
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        Direction = pdReturnValue
+        Precision = 10
+        Value = 0
+      end>
+    Left = 64
+    Top = 24
+  end
+  object dsSelecTodasLasAlertasDelSistema: TDataSource
+    DataSet = spSelecTodasLasAlertasDelSistema
+    Left = 216
+    Top = 41
+  end
+  object spSelecHuespedesPasadosDeTiempoPorFechaActual: TADOStoredProc
+    Connection = DataModuleConexionGeneral.ADOConnectionGeneral
+    ProcedureName = 'SelecHuespedesPasadosDeTiempoPorFechaFinal;1'
+    Parameters = <
+      item
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        Direction = pdReturnValue
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@vFechaActual'
+        Attributes = [paNullable]
+        DataType = ftDateTime
+        Value = 0d
+      end>
+    Left = 64
+    Top = 120
+  end
+  object dsSelecHuespedesPasadosDeTiempoPorFechaActual: TDataSource
+    DataSet = spSelecHuespedesPasadosDeTiempoPorFechaActual
+    Left = 216
+    Top = 136
+  end
+  object spSelecLechosTotales: TADOStoredProc
+    Connection = DataModuleConexionGeneral.ADOConnectionGeneral
+    ProcedureName = 'SelecAlertaLechosTotales;1'
+    Parameters = <
+      item
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        Direction = pdReturnValue
+        Precision = 10
+        Value = Null
+      end>
+    Left = 64
+    Top = 184
+  end
+  object dsSelecLechosTotales: TDataSource
+    DataSet = spSelecLechosTotales
+    Left = 216
+    Top = 208
+  end
+  object spSelecLechosLibresTotales: TADOStoredProc
+    Connection = DataModuleConexionGeneral.ADOConnectionGeneral
+    ProcedureName = 'SelecAlertaLechosLibresTotales;1'
+    Parameters = <>
+    Left = 64
+    Top = 240
+  end
+  object spSelecLechosOcupadosTotales: TADOStoredProc
+    Connection = DataModuleConexionGeneral.ADOConnectionGeneral
+    ProcedureName = 'SelecAlertaLechosOcupadosTotales;1'
+    Parameters = <>
+    Left = 64
+    Top = 296
+  end
+  object dsSelecLechosLibresTotales: TDataSource
+    DataSet = spSelecLechosLibresTotales
+    Left = 216
+    Top = 256
+  end
+  object dsSelecLechosOcupadosTotales: TDataSource
+    DataSet = spSelecLechosOcupadosTotales
+    Left = 216
+    Top = 304
+  end
+  object spSelecHuespedesConIncidenciasSoloRecientes: TADOStoredProc
+    Connection = DataModuleConexionGeneral.ADOConnectionGeneral
+    ProcedureName = 'SelecHuespedesConIncidenciasSoloRecientes;1'
+    Parameters = <>
+    Left = 64
+    Top = 352
+  end
+  object spSelecHuespedesConIncidenciasSoloHistoricas: TADOStoredProc
+    Connection = DataModuleConexionGeneral.ADOConnectionGeneral
+    ProcedureName = 'SelecHuespedesConIncidenciasSoloHistoricas;1'
+    Parameters = <
+      item
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        Direction = pdReturnValue
+        Precision = 10
+        Value = Null
+      end>
+    Left = 64
+    Top = 408
+  end
+  object spSelecHuespedesConIncidenciasHistoricasYRecientes: TADOStoredProc
+    Connection = DataModuleConexionGeneral.ADOConnectionGeneral
+    ProcedureName = 'SelecHuespedesConIncidenciasHistoricasYRecientes;1'
+    Parameters = <>
+    Left = 64
+    Top = 464
+  end
+  object dsSelecHuespedesConIncidenciasSoloRecientes: TDataSource
+    DataSet = spSelecHuespedesConIncidenciasSoloRecientes
+    Left = 216
+    Top = 368
+  end
+  object dsSelecHuespedesConIncidenciasSoloHistoricas: TDataSource
+    DataSet = spSelecHuespedesConIncidenciasSoloHistoricas
+    Left = 216
+    Top = 424
+  end
+  object dsSelecHuespedesConIncidenciasHistoricasYRecientes: TDataSource
+    DataSet = spSelecHuespedesConIncidenciasHistoricasYRecientes
+    Left = 216
+    Top = 480
+  end
+end

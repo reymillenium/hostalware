@@ -1,0 +1,152 @@
+program HostalWare;
+
+uses
+  uiapp in 'uiapp.pas',
+  Forms,
+  UfrmPrincipal in 'UfrmPrincipal.pas' {frmPrincipal},
+  UfrmAcercaDe in 'UfrmAcercaDe.pas' {frmAcercaDe},
+  UfrmPresentacion in 'UfrmPresentacion.pas' {frmPresentacion},
+  UPantalla in 'UPantalla.pas',
+  UFicheroIdioma in 'UFicheroIdioma.pas',
+  UFicheroAlineacionVisores in 'UFicheroAlineacionVisores.pas',
+  UFicheroTipoVisores in 'UFicheroTipoVisores.pas',
+  UFicheroZoomImagen in 'UFicheroZoomImagen.pas',
+  UFicheroComentarios in 'UFicheroComentarios.pas',
+  UfrmPreviewReporteHabitacionesExistentes in 'UfrmPreviewReporteHabitacionesExistentes.pas' {frmPreviewReporteHabitacionesExistentes},
+  UfrmQRReporteHabitacionesExistentes in 'UfrmQRReporteHabitacionesExistentes.pas' {QuickReportHabitacionesExistentes: TQuickRep},
+  UfrmValidacionPuestoDeTrabajo in 'UfrmValidacionPuestoDeTrabajo.pas' {frmValidacionPuestoDeTrabajo},
+  UCapaSeguridad in 'UCapaSeguridad.pas',
+  UPuestoDeTrabajo in 'UPuestoDeTrabajo.pas',
+  UDataModuleConexionGeneral in 'UDataModuleConexionGeneral.pas' {DataModuleConexionGeneral: TDataModule},
+  UDataModuleControlDelSistema in 'UDataModuleControlDelSistema.pas' {DataModuleControlDelSistema: TDataModule},
+  UModuloControlDelSistema in 'UModuloControlDelSistema.pas',
+  UGestionCursistasHospedados in 'UGestionCursistasHospedados.pas',
+  UfrmNotificacionDeAlguienLoggeado in 'UfrmNotificacionDeAlguienLoggeado.pas' {frmNotificacionDeAlguienLoggeado},
+  UfrmNuevoPuestoDeTrabajo in 'UfrmNuevoPuestoDeTrabajo.pas' {frmNuevoPuestoDeTrabajo},
+  UfrmModificarPuestoDeTrabajo in 'UfrmModificarPuestoDeTrabajo.pas' {frmModificarPuestoDeTrabajo},
+  UfrmDetallesDeTrazaDelSistema in 'UfrmDetallesDeTrazaDelSistema.pas' {frmDetallesDeTrazasDelSistema},
+  UModuloHospedaje in 'UModuloHospedaje.pas',
+  UDataModuleAdminCapacidades in 'UDataModuleAdminCapacidades.pas' {DataModuleAdminCapacidades: TDataModule},
+  UHuesped in 'UHuesped.pas',
+  UCama in 'UCama.pas',
+  UPlazaReservada in 'UPlazaReservada.pas',
+  UHabitacion in 'UHabitacion.pas',
+  UfrmNuevaHabitacion in 'UfrmNuevaHabitacion.pas' {frmNuevaHabitacion},
+  UfrmModificarHabitacion in 'UfrmModificarHabitacion.pas' {frmModificarHabitacion},
+  UfrmNuevoRegistro in 'UfrmNuevoRegistro.pas' {frmNuevoRegistro},
+  UDataModuleRegistroDeHuespedes in 'UDataModuleRegistroDeHuespedes.pas' {DataModuleRegistroDeHuespedes: TDataModule},
+  UfrmPreviewReporteRegistroDeHuespedes in 'UfrmPreviewReporteRegistroDeHuespedes.pas' {frmPreviewReporteRegistroDeHuespedes},
+  UfrmQRReporteRegistroDeHuespedes in 'UfrmQRReporteRegistroDeHuespedes.pas' {QuickReportRegistroDeHuespedes: TQuickRep},
+  UfrmQRReporteCamasExistentes in 'UfrmQRReporteCamasExistentes.pas' {QuickReportCamasExistentes: TQuickRep},
+  UfrmPreviewReporteCamasExistentes in 'UfrmPreviewReporteCamasExistentes.pas' {frmPreviewReporteCamasExistentes},
+  UfrmQRReporteTrazasDelSistema in 'UfrmQRReporteTrazasDelSistema.pas' {QuickReportTrazasDelSistema: TQuickRep},
+  UfrmPreviewReporteTrazasDelSistema in 'UfrmPreviewReporteTrazasDelSistema.pas' {frmPreviewReporteTrazasDelSistema},
+  UfrmPreviewReporteCuentasDeUsuarios in 'UfrmPreviewReporteCuentasDeUsuarios.pas' {frmPreviewReporteCuentasDeUsuarios},
+  UfrmQRReporteCuentasDeUsuarios in 'UfrmQRReporteCuentasDeUsuarios.pas' {QuickReportCuentasDeUsuarios: TQuickRep},
+  UfrmModificarRegistro in 'UfrmModificarRegistro.pas' {frmModificarRegistro},
+  UfrmTrasladarRegistro in 'UfrmTrasladarRegistro.pas' {frmTrasladarRegistro},
+  UfrmPermutarRegistro in 'UfrmPermutarRegistro.pas' {frmPermutarRegistro},
+  UDataModuleReservaciones in 'UDataModuleReservaciones.pas' {DataModuleReservaciones: TDataModule},
+  UfrmNuevaReservacion in 'UfrmNuevaReservacion.pas' {frmNuevaReservacion},
+  UReservacion in 'UReservacion.pas',
+  UDataModuleAlertasDelSistema in 'UDataModuleAlertasDelSistema.pas' {DataModuleAlertasDelSistema: TDataModule},
+  UfrmDetalleAlertaHabitacionVacia in 'UfrmDetalleAlertaHabitacionVacia.pas' {frmDetalleAlertaHabitacionVacia},
+  UfrmQRReporteAlertasDelSistema in 'UfrmQRReporteAlertasDelSistema.pas' {QuickReportAlertasDelSistema: TQuickRep},
+  UfrmPreviewReporteAlertasDelSistema in 'UfrmPreviewReporteAlertasDelSistema.pas' {frmPreviewReporteAlertasDelSistema},
+  UfrmDetalleAlertaHuespedesPasadosDeTiempo in 'UfrmDetalleAlertaHuespedesPasadosDeTiempo.pas' {frmDetalleAlertaHuespedesPasadosDeTiempo},
+  UfrmDetalleAlertaFaltaDeCapacidades in 'UfrmDetalleAlertaFaltaDeCapacidades.pas' {frmDetalleAlertaFaltaDeCapacidades},
+  UfrmDetalleAlertaHuespedesConIncidenciasRecientes in 'UfrmDetalleAlertaHuespedesConIncidenciasRecientes.pas' {frmDetalleAlertaHuespedesConIncidenciasRecientes},
+  UfrmDetalleAlertaHuespedesConIncidenciasHistoricasYRecientes in 'UfrmDetalleAlertaHuespedesConIncidenciasHistoricasYRecientes.pas' {frmDetalleAlertaHuespedesConIncidenciasHistoricasYRecientes},
+  UfrmDetalleAlertaHuespedesConIncidenciasHistoricas in 'UfrmDetalleAlertaHuespedesConIncidenciasHistoricas.pas' {frmDetalleAlertaHuespedesConIncidenciasHistoricas},
+  UDataModuleArchivoDeRegistros in 'UDataModuleArchivoDeRegistros.pas' {DataModuleArchivoDeRegistros: TDataModule},
+  UfrmDetalleDeRegistroEnArchivo in 'UfrmDetalleDeRegistroEnArchivo.pas' {frmDetalleDeRegistroEnArchivo},
+  UfrmPreviewReporteArchivosPorNombre in 'UfrmPreviewReporteArchivosPorNombre.pas' {frmPreviewReporteArchivosPorNombre},
+  UfrmPreviewReporteArchivosPorApellidos in 'UfrmPreviewReporteArchivosPorApellidos.pas' {frmPreviewReporteArchivosPorApellidos},
+  UfrmPreviewReporteArchivosEnIntervalosDeFechas in 'UfrmPreviewReporteArchivosEnIntervalosDeFechas.pas' {frmPreviewReporteArchivosEnIntervalosDeFechas},
+  UfrmPreviewReporteArchivosPorNombreYPorApellidos in 'UfrmPreviewReporteArchivosPorNombreYPorApellidos.pas' {frmPreviewReporteArchivosPorNombreYPorApellidos},
+  UfrmPreviewReporteArchivosPorIntervalosDeFechasInicioHospedaje in 'UfrmPreviewReporteArchivosPorIntervalosDeFechasInicioHospedaje.pas' {frmPreviewReporteArchivosPorIntervalosDeFechasInicioHospedaje},
+  UfrmPreviewReporteArchivosPorIntervalosDeFechasFinalHospedaje in 'UfrmPreviewReporteArchivosPorIntervalosDeFechasFinalHospedaje.pas' {frmPreviewReporteArchivosPorIntervalosDeFechasFinalHospedaje},
+  UfrmPreviewReporteArchivosPorCarneIdentidadYPorNombre in 'UfrmPreviewReporteArchivosPorCarneIdentidadYPorNombre.pas' {frmPreviewReporteArchivosPorCarneIdentidadYPorNombre},
+  UfrmPreviewReporteArchivosPorCarneIdentidadYPorApellidos in 'UfrmPreviewReporteArchivosPorCarneIdentidadYPorApellidos.pas' {frmPreviewReporteArchivosPorCarneIdentidadYPorApellidos},
+  UfrmPreviewReporteArchivosPorCarneIdentidad in 'UfrmPreviewReporteArchivosPorCarneIdentidad.pas' {frmPreviewReporteArchivosPorCarneIdentidad},
+  UfrmQRReporteArchivosPorNombre in 'UfrmQRReporteArchivosPorNombre.pas' {QuickReportArchivosPorNombre: TQuickRep},
+  UfrmQRReporteArchivosPorIntervalosDeFechasInicioHospedaje in 'UfrmQRReporteArchivosPorIntervalosDeFechasInicioHospedaje.pas' {QuickReportArchivosPorIntervalosDeFechasInicioHospedaje: TQuickRep},
+  UfrmQRReporteArchivosPorIntervalosDeFechasFinalHospedaje in 'UfrmQRReporteArchivosPorIntervalosDeFechasFinalHospedaje.pas' {QuickReportArchivosPorIntervalosDeFechasFinalHospedaje: TQuickRep},
+  UfrmQRReporteArchivosPorCarneIdentidadYPorNombre in 'UfrmQRReporteArchivosPorCarneIdentidadYPorNombre.pas' {QuickReportArchivosPorCarneIdentidadYPorNombre: TQuickRep},
+  UfrmQRReporteArchivosPorCarneIdentidadPorNombreYPorApellido in 'UfrmQRReporteArchivosPorCarneIdentidadPorNombreYPorApellido.pas' {QuickReportArchivosPorCarneIdentidadPorNombreYPorApellido: TQuickRep},
+  UfrmQRReporteArchivosPorCarneIdentidad in 'UfrmQRReporteArchivosPorCarneIdentidad.pas' {QuickReportArchivosPorCarneIdentidad: TQuickRep},
+  UfrmQRReporteArchivosPorApellidos in 'UfrmQRReporteArchivosPorApellidos.pas' {QuickReportArchivosPorApellidos: TQuickRep},
+  UfrmQRReporteArchivosEnIntervalosDeFechas in 'UfrmQRReporteArchivosEnIntervalosDeFechas.pas' {QuickReportArchivosEnIntervalosDeFechas: TQuickRep},
+  UfrmQRReporteArchivosPorNombreYPorApellidos in 'UfrmQRReporteArchivosPorNombreYPorApellidos.pas' {QuickReportArchivosPorNombreYPorApellidos: TQuickRep},
+  UfrmQRReporteArchivosPorCarneIdentidadYPorApellidos in 'UfrmQRReporteArchivosPorCarneIdentidadYPorApellidos.pas' {QuickReportArchivosPorCarneIdentidadYPorApellidos: TQuickRep},
+  UfrmPreviewReporteArchivosPorCarneIdentidadNombreYApellidos in 'UfrmPreviewReporteArchivosPorCarneIdentidadNombreYApellidos.pas' {frmPreviewReporteArchivosPorCarneIdentidadNombreYApellidos};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.Title := 'HostalWare v1.0';
+  Application.HelpFile := 'HelpFiles\HELP.HLP';
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TfrmAcercaDe, frmAcercaDe);
+  Application.CreateForm(TfrmPresentacion, frmPresentacion);
+  Application.CreateForm(TfrmPreviewReporteHabitacionesExistentes, frmPreviewReporteHabitacionesExistentes);
+  Application.CreateForm(TQuickReportHabitacionesExistentes, QuickReportHabitacionesExistentes);
+  Application.CreateForm(TfrmValidacionPuestoDeTrabajo, frmValidacionPuestoDeTrabajo);
+  Application.CreateForm(TDataModuleConexionGeneral, DataModuleConexionGeneral);
+  Application.CreateForm(TDataModuleControlDelSistema, DataModuleControlDelSistema);
+  Application.CreateForm(TfrmNotificacionDeAlguienLoggeado, frmNotificacionDeAlguienLoggeado);
+  Application.CreateForm(TfrmNuevoPuestoDeTrabajo, frmNuevoPuestoDeTrabajo);
+  Application.CreateForm(TfrmModificarPuestoDeTrabajo, frmModificarPuestoDeTrabajo);
+  Application.CreateForm(TfrmDetallesDeTrazasDelSistema, frmDetallesDeTrazasDelSistema);
+  Application.CreateForm(TDataModuleAdminCapacidades, DataModuleAdminCapacidades);
+  Application.CreateForm(TfrmNuevaHabitacion, frmNuevaHabitacion);
+  Application.CreateForm(TfrmModificarHabitacion, frmModificarHabitacion);
+  Application.CreateForm(TfrmNuevoRegistro, frmNuevoRegistro);
+  Application.CreateForm(TDataModuleRegistroDeHuespedes, DataModuleRegistroDeHuespedes);
+  Application.CreateForm(TfrmPreviewReporteRegistroDeHuespedes, frmPreviewReporteRegistroDeHuespedes);
+  Application.CreateForm(TQuickReportRegistroDeHuespedes, QuickReportRegistroDeHuespedes);
+  Application.CreateForm(TQuickReportCamasExistentes, QuickReportCamasExistentes);
+  Application.CreateForm(TfrmPreviewReporteCamasExistentes, frmPreviewReporteCamasExistentes);
+  Application.CreateForm(TQuickReportTrazasDelSistema, QuickReportTrazasDelSistema);
+  Application.CreateForm(TfrmPreviewReporteTrazasDelSistema, frmPreviewReporteTrazasDelSistema);
+  Application.CreateForm(TfrmPreviewReporteCuentasDeUsuarios, frmPreviewReporteCuentasDeUsuarios);
+  Application.CreateForm(TQuickReportCuentasDeUsuarios, QuickReportCuentasDeUsuarios);
+  Application.CreateForm(TfrmModificarRegistro, frmModificarRegistro);
+  Application.CreateForm(TfrmTrasladarRegistro, frmTrasladarRegistro);
+  Application.CreateForm(TfrmPermutarRegistro, frmPermutarRegistro);
+  Application.CreateForm(TDataModuleReservaciones, DataModuleReservaciones);
+  Application.CreateForm(TfrmNuevaReservacion, frmNuevaReservacion);
+  Application.CreateForm(TDataModuleAlertasDelSistema, DataModuleAlertasDelSistema);
+  Application.CreateForm(TfrmDetalleAlertaHabitacionVacia, frmDetalleAlertaHabitacionVacia);
+  Application.CreateForm(TQuickReportAlertasDelSistema, QuickReportAlertasDelSistema);
+  Application.CreateForm(TfrmPreviewReporteAlertasDelSistema, frmPreviewReporteAlertasDelSistema);
+  Application.CreateForm(TfrmDetalleAlertaHuespedesPasadosDeTiempo, frmDetalleAlertaHuespedesPasadosDeTiempo);
+  Application.CreateForm(TfrmDetalleAlertaFaltaDeCapacidades, frmDetalleAlertaFaltaDeCapacidades);
+  Application.CreateForm(TfrmDetalleAlertaHuespedesConIncidenciasRecientes, frmDetalleAlertaHuespedesConIncidenciasRecientes);
+  Application.CreateForm(TfrmDetalleAlertaHuespedesConIncidenciasHistoricasYRecientes, frmDetalleAlertaHuespedesConIncidenciasHistoricasYRecientes);
+  Application.CreateForm(TfrmDetalleAlertaHuespedesConIncidenciasHistoricas, frmDetalleAlertaHuespedesConIncidenciasHistoricas);
+  Application.CreateForm(TDataModuleArchivoDeRegistros, DataModuleArchivoDeRegistros);
+  Application.CreateForm(TfrmDetalleDeRegistroEnArchivo, frmDetalleDeRegistroEnArchivo);
+  Application.CreateForm(TfrmPreviewReporteArchivosPorNombre, frmPreviewReporteArchivosPorNombre);
+  Application.CreateForm(TfrmPreviewReporteArchivosPorApellidos, frmPreviewReporteArchivosPorApellidos);
+  Application.CreateForm(TfrmPreviewReporteArchivosEnIntervalosDeFechas, frmPreviewReporteArchivosEnIntervalosDeFechas);
+  Application.CreateForm(TfrmPreviewReporteArchivosPorNombreYPorApellidos, frmPreviewReporteArchivosPorNombreYPorApellidos);
+  Application.CreateForm(TfrmPreviewReporteArchivosPorIntervalosDeFechasInicioHospedaje, frmPreviewReporteArchivosPorIntervalosDeFechasInicioHospedaje);
+  Application.CreateForm(TfrmPreviewReporteArchivosPorIntervalosDeFechasFinalHospedaje, frmPreviewReporteArchivosPorIntervalosDeFechasFinalHospedaje);
+  Application.CreateForm(TfrmPreviewReporteArchivosPorCarneIdentidadYPorNombre, frmPreviewReporteArchivosPorCarneIdentidadYPorNombre);
+  Application.CreateForm(TfrmPreviewReporteArchivosPorCarneIdentidadYPorApellidos, frmPreviewReporteArchivosPorCarneIdentidadYPorApellidos);
+  Application.CreateForm(TfrmPreviewReporteArchivosPorCarneIdentidad, frmPreviewReporteArchivosPorCarneIdentidad);
+  Application.CreateForm(TQuickReportArchivosPorNombre, QuickReportArchivosPorNombre);
+  Application.CreateForm(TQuickReportArchivosPorIntervalosDeFechasInicioHospedaje, QuickReportArchivosPorIntervalosDeFechasInicioHospedaje);
+  Application.CreateForm(TQuickReportArchivosPorIntervalosDeFechasFinalHospedaje, QuickReportArchivosPorIntervalosDeFechasFinalHospedaje);
+  Application.CreateForm(TQuickReportArchivosPorCarneIdentidadYPorNombre, QuickReportArchivosPorCarneIdentidadYPorNombre);
+  Application.CreateForm(TQuickReportArchivosPorCarneIdentidadYPorApellidos, QuickReportArchivosPorCarneIdentidadYPorApellidos);
+  Application.CreateForm(TQuickReportArchivosPorCarneIdentidadPorNombreYPorApellido, QuickReportArchivosPorCarneIdentidadPorNombreYPorApellido);
+  Application.CreateForm(TQuickReportArchivosPorCarneIdentidad, QuickReportArchivosPorCarneIdentidad);
+  Application.CreateForm(TQuickReportArchivosPorApellidos, QuickReportArchivosPorApellidos);
+  Application.CreateForm(TQuickReportArchivosEnIntervalosDeFechas, QuickReportArchivosEnIntervalosDeFechas);
+  Application.CreateForm(TQuickReportArchivosPorNombreYPorApellidos, QuickReportArchivosPorNombreYPorApellidos);
+  Application.CreateForm(TfrmPreviewReporteArchivosPorCarneIdentidadNombreYApellidos, frmPreviewReporteArchivosPorCarneIdentidadNombreYApellidos);
+  Application.Run;
+end.
